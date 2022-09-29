@@ -1,7 +1,12 @@
 import purple from "@mui/material/colors/purple";
 import { PaletteOptions } from "@mui/material";
 
-export const palette: PaletteOptions = {
+export interface ICustomPaletteOptions extends PaletteOptions {
+    darkViolet: PaletteOptions["primary"];
+    gray: PaletteOptions["primary"];
+}
+
+export const palette: ICustomPaletteOptions = {
     primary: {
         main: "#6c43bf",
         dark: "#38178e",
@@ -14,5 +19,13 @@ export const palette: PaletteOptions = {
         light: "#ecd7ff",
         contrastText: "#fff",
         // "200": purple[200],
+    },
+
+    darkViolet: {
+        main: "#19072c",
+    },
+
+    gray: {
+        main: "#85878C",
     },
 };

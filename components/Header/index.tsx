@@ -8,29 +8,37 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import LogoSvg from "../../public/logo.svg";
 import Link from "next/link";
+import { TextField } from "@mui/material";
+import { Icon } from "components/Icon";
+import { Socials } from "components/Socials";
 
 import classes from "./Header.module.scss";
+import Image from "next/image";
 
 export const Header: React.FC = () => {
-    console.log(LogoSvg);
     return (
-        <AppBar className={classes.header}>
-            <Container maxWidth="lg">
-                <div className={classes.header__top}>
+        <AppBar className={classes.header} position="static">
+             <div className="_container">
+                <div className={classes["header-top"]}>
                     <Link href="/">
-                        <a>
-                            <img src={LogoSvg.src} />
+                        <a className={classes["header-top__logo-link"]}>
+                            <Image src={LogoSvg.src} alt="" layout="fill" />
                         </a>
                     </Link>
-                    <Button className={classes["header__login-button"]} variant="contained">
-                        Войти
-                    </Button>
+                    <div className={classes["header-top__right"]}>
+                        <div className={classes["header-top__socials-wrapper"]}>
+                            <Socials />
+                        </div>
+                        <Button className={classes["header__login-button"]} variant="contained">
+                            Войти
+                        </Button>
+                    </div>
                 </div>
                 <div className={classes.header__bottom}>
                     <nav className={classes.menu}>
                         <ul className={classes.menu__list}>
                             <li>
-                                <Link href="/films">
+                                <Link href="/kinoafisha/cinema">
                                     <a>
                                         <Typography color="black" variant="h6">
                                             Фильмы
@@ -68,7 +76,7 @@ export const Header: React.FC = () => {
                         </ul>
                     </nav>
                 </div>
-            </Container>
+            </div>
         </AppBar>
     );
 };

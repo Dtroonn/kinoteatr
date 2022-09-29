@@ -1,31 +1,84 @@
 .header {
     background: #fff;
     padding: 20px 0;
-
-    &__top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
+    position: fixed;
+    z-index: 2;
     &__login-button {
         min-width: 160px;
         text-transform: none;
+        margin: 0 0 0 40px;
+        @media (max-width: ($md3+px)) {
+            min-width: auto;
+        }
     }
 
 
     &__bottom {
         display: flex;
+        overflow-x: auto;
         justify-content: center;
+        @media (max-width: ($md3+px)) {
+            margin: 0 -25px;
+            padding: 0 25px;
+        }
+
+        @media (max-width: ($md4+px)) {
+         justify-content: start;
+        }
+    }
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo-link {
+        position: relative;
+        flex: 0 1 107px;
+        height: 52px;
+        @media (max-width: ($md4+px)) {
+         flex: 0 1 90px;
+        }
+    }
+    
+    &__socials-wrapper {
+        @media (max-width: 400px) {
+         display: none
+        }
     }
 }
 
 .menu {
     &__list {
         display: flex;
-        margin: 0 -32px;
+        margin: 0 -20px;
+        justify-content: center;
+        @media (max-width: ($md4+px)) {
+            margin: 0 -15px;
+        } 
         li {
-            padding: 0 32px;
+            padding: 0 20px;
+
+            @media (max-width: ($md4+px)) {
+                padding: 0 15px;
+            }
+
+            h6 {
+                @include anim(0.3s, 0s);
+                &:hover {
+                    color: var(--primary)
+                }
+
+                @media (max-width: ($md3+px)) {
+                    font-size: 17px;
+                }
+ 
+            }
         }
     }
 }

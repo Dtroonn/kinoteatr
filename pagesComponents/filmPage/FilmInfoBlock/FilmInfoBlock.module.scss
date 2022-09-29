@@ -1,0 +1,48 @@
+.film-info {
+    &__title {
+        font-weight: 600;
+        margin: 0 0 10px 0;
+        @media (max-width: ($md3+px)) {
+            font-size: 1.3rem;
+        }
+    }
+
+    &__year-city-time {
+        display: flex;
+        margin: 0 0 10px 0;
+    }
+
+    &__time {
+        margin: 0 0 0 20px;
+    }
+
+    &__age-rate {
+        display: inline-block;
+        border: 1px solid var(--darkGray);
+        padding: 0 6px;
+        margin: 0 0 30px 0;
+        @media (max-width: ($md2+px)) {
+            margin: 0 0 20px 0;
+        }
+    }
+
+    &__description {
+        margin: 0 0 30px 0;
+        @media (max-width: ($md2+px)) {
+            margin: 0 0 20px 0;
+        }
+    }
+
+    &__text-row {
+        margin: 0 0 10px 0;
+    }
+}
+
+.text-row {
+    display: flex;
+    &__title {
+        min-width: 70px;
+        opacity: 0.5;
+        margin: 0 20px 0 0;
+    }
+}

@@ -1,0 +1,23 @@
+.films-filters__select {
+    color: #fff;
+    border: 1px solid #fff !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 32px;
+    width: 250px;
+    fieldset  {
+        display: none;
+    }
+
+    svg {
+        color: #fff;
+    }
+
+    &>div {
+        height: 32px !important;
+        display: flex;
+        align-items: center;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

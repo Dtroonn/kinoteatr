@@ -1,0 +1,9 @@
+.tag {
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    &_active {
+        background-image: linear-gradient(to left, #4f0ed0, #6633cc);
+        border-color: transparent;
+    }
+}

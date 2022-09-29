@@ -1,0 +1,41 @@
+.film-card {
+    &__top {
+        margin: 0 0 16px 0;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    &__img-wrapper {
+       position: relative;
+       border-radius: 5px;
+       overflow: hidden;
+       padding-bottom: calc((240 / 160) * 100%);
+    }
+
+    &__age-and_genres {
+        margin: 0 0 10px 0;
+    }
+
+    &__age-rating {
+        border: 1px solid var(--darkGray);
+        border-radius: 5px;
+        padding: 2px 4px;
+        display: inline-block;
+    }
+
+    &__genres {
+        color: var(--gray);
+    }
+}
+
+.film-card-tag {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    &__title {
+        @media (max-width: 620px) {
+            font-size: 0.82rem;
+        }
+    }
+}

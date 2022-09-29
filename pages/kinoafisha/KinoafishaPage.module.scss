@@ -1,0 +1,23 @@
+.page {
+    &__container {
+        background: var(--darkViolet);
+    }
+
+    &__tabs-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__content {
+        padding: 0 0 60px 0;
+    }
+}
+
+.head-block {
+    margin: 40px 0 25px 0;
+
+    &__label {
+        margin: 0 0 0 30px;
+        color: var(--gray);
+    }
+}

@@ -1,0 +1,52 @@
+.dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 52px;
+    height: 100%;
+    width: 100%;
+
+    @media (max-width: ($md3+px)) {
+        // padding: 0 20px;
+        padding: 20px;
+    }
+
+    &__close-btn {
+        padding: 12px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        &:after {
+            content: '';
+            background: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.75;
+        }
+
+        span {
+            z-index: 1;
+            position: relative;
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+
+        &_prev {
+            left: 0;
+            transform: translateY(-50%) rotate(-180deg);
+        }
+
+        &_next {
+            right: 0;
+            transform: translateY(-50%);
+        }
+    }
+}

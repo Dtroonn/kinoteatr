@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../public/fonts/icomoon.eot?fp54p0');
+    src:  url('../public/fonts/icomoon.eot?fp54p0#iefix') format('embedded-opentype'),
+      url('../public/fonts/icomoon.ttf?fp54p0') format('truetype'),
+      url('../public/fonts/icomoon.woff?fp54p0') format('woff'),
+      url('../public/fonts/icomoon.svg?fp54p0#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: block;
+    font-family: 'icomoon' !important;
+}
+
+.icon-arrow {
+    font-size: 18px;
+    &:before {
+        content: "\e907";
+    }
+}
+
+.icon-geo:before {
+    content: "\e901";
+  }
+
+.icon-cross:before {
+    content: "\e900";
+  }
+
+
+.icon-minus:before {
+    content: "\e902";
+}
+.icon-ok {
+    color: #c6cad8;
+    font-size: 22px;
+    @include anim(0.3s, 0s);
+
+    &:hover {
+        color: var(--primary)
+    }
+
+    &:before {
+        content: "\e903";
+    }
+}
+.icon-plus:before {
+    content: "\e904";
+}
+.icon-telegram {
+    color: #c6cad8;
+    font-size: 22px;
+    @include anim(0.3s, 0s);
+
+    &:hover {
+        color: var(--primary)
+    }
+
+    &:before {
+        content: "\e905";
+    }
+}
+.icon-vk {
+    color: #c6cad8;
+    font-size: 30px;
+    @include anim(0.3s, 0s);
+
+    &:hover {
+        color: var(--primary)
+    }
+    
+    &:before {
+        content: "\e906";
+    }
+}

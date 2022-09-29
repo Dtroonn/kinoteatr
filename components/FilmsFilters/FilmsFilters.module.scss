@@ -1,0 +1,43 @@
+.films-filters {
+    background: #141822;
+    padding: 30px 80px;
+
+    &__select {
+        background: #fff;
+    }
+
+    &__btn {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.select-loading-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+        content: '';
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.8;
+    }
+
+    &_loading {
+        &::after {
+            display: block;
+        }
+    }
+
+    &__loader {
+        position: absolute;
+        z-index: 1;
+    }
+}

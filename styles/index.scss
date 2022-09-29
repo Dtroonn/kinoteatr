@@ -1,2 +1,47 @@
 @import 'variables.scss';
 @import 'null.scss';
+@import 'mixins.scss';
+@import 'icons.scss';
+
+:root {
+    --primary: #6c43bf;
+    --darkViolet: #19072c;
+    --secondary: #b9a6e0;
+    --gray: #85878C;
+    --darkGray: #545154;
+}
+
+._container {
+    max-width: $mw + px;
+    margin: 0 auto;
+    padding: 0 25px;
+    width: 100%;
+    @media (max-width: ($md1+px)) {
+    }
+    @media (max-width: ($md2+px)) {
+        
+    }
+    @media (max-width: ($md3+px)) {
+        max-width: none;
+        padding: 0 10px;
+    }
+}
+
+._wrapper {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#nprogress {
+    .bar {
+        background: var(--primary) !important;
+      }
+
+    .spinner-icon {
+        border-top-color: var(--primary) !important;
+        border-left-color: var(--primary) !important;
+    }
+}
