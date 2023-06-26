@@ -1,4 +1,10 @@
-.films-filters__select {
+.schedule-filters {
+    &__date-picker {
+        margin: 0 0 40px 0;
+    }
+}
+
+.schedule-filters-select {
     color: #fff;
     border: 1px solid #fff !important;
     padding-top: 0;
@@ -19,5 +25,11 @@
         align-items: center;
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    &__option {
+        height: 42px;
+        display: flex;
+        justify-content: space-between;
     }
 }

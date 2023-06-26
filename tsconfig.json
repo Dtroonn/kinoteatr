@@ -19,8 +19,11 @@
       "components": ["components"],
       "common": ["common"],
       "pagesComponents": ["pagesComponents"],
-      "hooks": ["hooks"]
-    }
+      "hooks": ["hooks"],
+      "types": ["types"],
+      "contexts": ["contexts"]
+    },
+    "downlevelIteration": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

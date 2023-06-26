@@ -15,6 +15,21 @@
     font-family: 'icomoon' !important;
 }
 
+.icon-long-arrow {
+    font-size: 20px;
+    &:before {
+        content: "\e909";
+    }
+}
+
+.icon-check {
+    color: var(--primary);
+    font-size: 20px;
+    &:before {
+        content: "\e908";
+    }
+}
+
 .icon-arrow {
     font-size: 18px;
     &:before {
@@ -26,9 +41,12 @@
     content: "\e901";
   }
 
-.icon-cross:before {
-    content: "\e900";
-  }
+.icon-cross {
+    font-size: 18px;
+    &:before {
+        content: "\e900";
+    }
+}
 
 
 .icon-minus:before {

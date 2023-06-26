@@ -1,5 +1,5 @@
-import { ChipProps } from "@mui/material/Chip";
+import { ChipProps } from '@mui/material/Chip';
 
 export interface TagProps extends ChipProps {
-    active?: boolean;
+	active?: boolean;
 }

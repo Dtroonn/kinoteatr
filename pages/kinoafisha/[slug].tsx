@@ -9,12 +9,13 @@ import classes from "./KinoafishaPage.module.scss";
 import { NavigationTabs } from "components/NavigationTabs";
 import { FilmsFilters } from "components/FilmsFilters";
 import { FilmCard } from "components/FilmCard";
-import { IFilm } from "pages/api/films";
+import { IFilm } from "types/film.interface";
 import { ParsedUrlQuery } from "querystring";
 import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-const KinoafishaPage: NextPage<{ films: IFilm[]; category: "cinema" | "theatre" }> = ({
+const KinoafishaPage: React.FC<KinoafishaPageProps> = ({
     films,
     category,
 }) => {
@@ -53,7 +54,7 @@ const KinoafishaPage: NextPage<{ films: IFilm[]; category: "cinema" | "theatre" 
                             variant="body2"
                             component="span"
                             color="white">
-                            В прокате 39 фильмов
+                            В прокате {films.length} фильмов
                         </Typography>
                     </div>
                     <Grid
@@ -62,7 +63,7 @@ const KinoafishaPage: NextPage<{ films: IFilm[]; category: "cinema" | "theatre" 
                         columnSpacing={{ xs: 1.5, sm: 3, md: 4.5, lg: 4, xl: 3.5 }}>
                         {films.map((film, index) => (
                             <Grid key={index} item xs={6} sm={4} md={3} lg={2.4} xl={2}>
-                                <Link href={`/film/${index}`}>
+                                <Link href={`/film/${film.id}`}>
                                     <a>
                                         <FilmCard {...film} />
                                     </a>
@@ -76,28 +77,36 @@ const KinoafishaPage: NextPage<{ films: IFilm[]; category: "cinema" | "theatre" 
     );
 };
 
-interface IParams extends ParsedUrlQuery {
-    slug: string;
+interface KinoafishaPageProps {
+    films: IFilm[]; 
+    category: "cinema" | "theatre";
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+interface IParams extends ParsedUrlQuery {
+    slug: KinoafishaPageProps['category'];
+}
+
+export const getServerSideProps: GetServerSideProps<KinoafishaPageProps> = async ({params, query}) => {
+    
     const availableSlugs = ["cinema", "theatre"];
-    const { slug } = context.params as IParams;
+    const { slug } = params as IParams;
     if (!availableSlugs.includes(slug)) {
         return {
             notFound: true,
         };
     }
 
-    const { data } = await axios.get("http://localhost:3000/api/films", {
-        params: {
-            category: slug,
-        },
+    const { data } = await axios.post<IFilm[]>("http://localhost:3444/api/films/find", {
+        category: slug,
+        date: query.date,
+        genre: query.genre,
+        filmType: query.type,
+        cityAlias: "voronezh",
     });
 
     return {
         props: {
-            films: data.items,
+            films: data,
             category: slug,
         },
     };

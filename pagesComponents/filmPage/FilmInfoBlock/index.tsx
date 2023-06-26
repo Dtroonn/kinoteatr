@@ -3,6 +3,10 @@ import clsx from "clsx";
 import React from "react";
 
 import classes from "./FilmInfoBlock.module.scss";
+import { FilmPageContext } from "contexts/FilmPage.context";
+import dayjs from "dayjs";
+import duration from 'dayjs/plugin/duration'
+dayjs.extend(duration)
 
 const TextRow: React.FC<{ title: string; value: string; className?: string }> = ({
   title,
@@ -22,43 +26,42 @@ const TextRow: React.FC<{ title: string; value: string; className?: string }> = 
 };
 
 export const FilmInfoBlock = () => {
+  const {film} = React.useContext(FilmPageContext);
+
+  const genresNames = film.genres.map((genre) => genre.genre.name)
+
   return (
     <div className={classes["film-info"]}>
       <Typography variant="h5" color="white" className={classes["film-info__title"]}>
-        СЕРДЦЕ ПАРМЫ
+        {film.name}
       </Typography>
       <div className={classes["film-info__year-city-time"]}>
         <Typography variant="body2" color="white">
-          {"(2021, Россия)"}
+          {`(${film.issueYear}, ${film.country})`}
         </Typography>
         <Typography variant="body2" color="white" className={classes["film-info__time"]}>
-          2 ч. 39 мин.
+          {dayjs.duration(film.durationMins, 'minutes').format('H ч. mm мин.')}
         </Typography>
       </div>
       <Typography variant="body2" color="white" className={classes["film-info__age-rate"]}>
-        16+
+        {film.ageRaiting}+
       </Typography>
       <Typography variant="body2" color="white" className={classes["film-info__description"]}>
-        Князь Михан был рожден в языческих таежных землях – там, где шаманы приносили кровавые
-        жертвы, чтобы отогнать темных духов и сохранить равновесие. Здесь он встретил ту, в которой
-        – вся красота мира и сила ведьмы-ламии. Ту, быть с которой ему запрещают законы. Эта любовь
-        навсегда изменит судьбу Михана и его родной пармы. Ему предстоит сражаться, защищая свой мир
-        от злого рока и от тех, кто придет с мечом в поисках богатств и новых земель. По
-        одноименному бестселлеру Алексея Иванова.
+        {film.description}
       </Typography>
       <TextRow
         title="Жанр"
-        value="Эпическая Экшн-Драма"
+        value={genresNames.join(', ')}
         className={classes["film-info__text-row"]}
       />
       <TextRow
         title="Режиссер"
-        value="Антон Мегердичев"
+        value={film.director}
         className={classes["film-info__text-row"]}
       />
       <TextRow
         title="В ролях"
-        value="Александр Кузнецов, Евгений Миронов, Елена Ербакова, Сергей Пускепалис, Федор Бондарчук, Виталий Кищенко, Елена Панова, Роза Хайруллина, Михаил Евланов, Валентин Цзин"
+        value={film.casts.join(', ')}
         className={classes["film-info__text-row"]}
       />
     </div>

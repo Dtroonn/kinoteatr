@@ -1,0 +1,52 @@
+.popup {
+    &__content {
+       position: relative;
+    }
+ }
+ 
+ .zoom-controls {
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    &__btn {
+       border-radius: 50%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 60px;
+       width: 60px;
+       background-color: #30343A;
+       &:first-child {
+          margin: 0 0 20px 0;
+       }
+    }
+ 
+    &__icon {
+       font-size: 20px;
+       color: var(--primary)
+    }
+ }
+
+ .session-info {
+   &__header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+   }
+
+   &__place {
+      color: var(--gray);
+      margin: 5px 0 0 0;
+   }
+
+    &__format {
+        padding: 2px 4px;
+        border-radius: 2px;
+        display: inline-block;
+        background-color: #30343A;;
+        color: var(--white);
+        font-size: 12px;
+    }
+ }

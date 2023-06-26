@@ -1,4 +1,4 @@
 export interface ISocialsProps {
-    className?: string;
-    size?: "medium" | "small";
+	className?: string;
+	size?: 'medium' | 'small';
 }

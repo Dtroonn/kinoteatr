@@ -33,7 +33,6 @@ export const ImagesViewerYoutubeVideo: React.FC<ImagesViewerYoutubeVideoProps> =
 
         if (iframeRef.current) {
             iframeRef.current.onload = function () {
-                console.log("HELLO Я ЗАГРУЗИЛСЯ", src);
                 isShowLoader = false;
                 setLoadingStatus("loaded");
             };
@@ -52,7 +51,6 @@ export const ImagesViewerYoutubeVideo: React.FC<ImagesViewerYoutubeVideoProps> =
                 parseInt(parentElemStyles.paddingLeft) -
                 parseInt(parentElemStyles.paddingRight);
 
-            console.log("WRAPPER WIDTH", wrapperWidth);
             const viewportHeight = window.innerHeight;
 
             // console.log("window.innerHeight", window.innerHeight);

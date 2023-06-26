@@ -3,9 +3,11 @@ import Image from "next/image";
 
 import classes from "./FilmCard.module.scss";
 import Typography from "@mui/material/Typography";
-import { IFilm } from "pages/api/films";
+import { IFilm } from "types/film.interface";
 
-export const FilmCard: React.FC<IFilm> = ({ title, ageRaiting, genres, imgUrl, tag }) => {
+export const FilmCard: React.FC<IFilm> = ({ name, ageRaiting, genres, imgUrl, tag }) => {
+    const genresNames = genres.map((item) => item.genre.name)
+
     return (
         <div className={classes["film-card"]}>
             <div className={classes["film-card__top"]} style={{ background: tag?.color }}>
@@ -43,11 +45,11 @@ export const FilmCard: React.FC<IFilm> = ({ title, ageRaiting, genres, imgUrl, t
                     variant="body2"
                     component="span"
                     color="gray">
-                    {genres.join(", ")}
+                    {genresNames.join(', ')}
                 </Typography>
             </div>
             <Typography variant="body1" color="white">
-                {title}
+                {name}
             </Typography>
         </div>
     );

@@ -1,0 +1,20 @@
+.session-info {
+    &__time {
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        width: 76px;
+        margin: 0 0 8px 0;
+        border: 1px solid var(--secondary);
+        &> p {
+            font-size: 18px;
+        }
+    }
+
+    &__hall-number {
+        margin: 5px 0 0 0;
+        color: rgba(255, 255, 255, 0.5);
+    }
+}

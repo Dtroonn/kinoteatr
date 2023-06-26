@@ -1,0 +1,26 @@
+.cinema-info {
+    &__address {
+        color: rgba(255, 255, 255, 0.5);
+        margin: 6px 0;
+    }
+}
+
+.metro-stations {
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+
+
+    &__branch {
+        border: 1px solid #fff;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 10px 0 0;
+    }
+
+    &__title {
+        color: rgba(255, 255, 255, 0.5);
+    }
+}

@@ -73,7 +73,6 @@ export const ImagesViewer: React.FC<ImagesViewerProps> = ({
     };
 
     const handleTouchStart = (event: React.TouchEvent): void => {
-        console.log("HELLO");
         touchStartCoordsRef.current.x = event.changedTouches[0].screenX;
         touchStartCoordsRef.current.y = event.changedTouches[0].screenY;
     };

@@ -1,5 +1,4 @@
 import React from "react";
-import Dialog from "@mui/material/Dialog";
 import { SwiperSlide, Swiper } from "swiper/react";
 import SwiperClass from "swiper/types/swiper-class";
 import { Navigation, EffectFade, Thumbs, Lazy } from "swiper";

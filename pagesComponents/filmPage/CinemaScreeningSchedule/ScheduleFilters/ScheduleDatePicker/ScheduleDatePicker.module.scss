@@ -1,0 +1,10 @@
+.header-button {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        color: var(--secondary);
+        transform: rotate(90deg);
+        margin: 0 0 -2px 10px;
+    }
+}
