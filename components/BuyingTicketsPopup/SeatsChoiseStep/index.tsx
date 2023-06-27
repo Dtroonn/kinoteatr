@@ -60,12 +60,20 @@ export const SeatsChoiseStep = () => {
 						<div
 							style={{
 								position: 'relative',
-								transform: `scale(${zoomValue})`,
+								// transform: `scale(${zoomValue})`,
+								cursor: 'move',
 								width: '100%',
 								height: '100%',
 							}}
 						>
-							<div style={{ position: 'absolute', cursor: 'move', width: '100%', height: '100%' }}>
+							<div
+								style={{
+									position: 'absolute',
+									transform: `scale(${zoomValue})`,
+									// top: '50%',
+									// left: '50%',
+								}}
+							>
 								{mock.map((seat) => (
 									<div key={seat.id} style={{ position: 'absolute', left: seat.x, top: seat.y }}>
 										<Checkbox />
