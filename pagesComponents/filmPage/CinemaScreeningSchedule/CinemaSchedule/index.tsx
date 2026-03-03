@@ -11,7 +11,7 @@ import axios from 'axios';
 import { getPathAndQuery } from 'common/utils/getPathWithoutQuery';
 import { FilmPageContext } from 'contexts/FilmPage.context';
 import { ICinema } from 'types/cinema.interface';
-import { MODALS_QUERIES } from 'common/constants';
+import { BUYING_TICKETS_MODAL_QUERIES } from 'common/constants';
 
 export const CinemaSchedule: React.FC = () => {
 	const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
@@ -24,6 +24,10 @@ export const CinemaSchedule: React.FC = () => {
 
 	React.useEffect(() => {
 		(async function () {
+			if (!film.filmSessions.length) {
+				return;
+			}
+
 			const { data } = await axios.post<ICinema[]>(
 				'http://localhost:3444/api/cinemas/findWithSessions',
 				{
@@ -39,14 +43,15 @@ export const CinemaSchedule: React.FC = () => {
 		})();
 	}, [query.id, query.date, query.formats, query.hallsTypes]);
 
-	const handleClickSession = (): void => {
-		const { path, query } = getPathAndQuery(router.asPath);
-		query[MODALS_QUERIES.BUYING_TICKETS_POPUP] = 'true';
-
+	const onOpenBuyingTicketsPopup = (sessionId: number): void => {
 		router.push(
 			{
-				pathname: path,
-				query,
+				pathname: router.pathname,
+				query: {
+					...router.query,
+					[BUYING_TICKETS_MODAL_QUERIES.BUYING_TICKETS_POPUP]: 'true',
+					[BUYING_TICKETS_MODAL_QUERIES.SESSION_ID]: String(sessionId),
+				},
 			},
 			undefined,
 			{
@@ -71,13 +76,16 @@ export const CinemaSchedule: React.FC = () => {
 						<Grid item xs={8}>
 							<div className={classes.sessions}>
 								<Grid container spacing={2}>
-									{cinema.filmSessions!.map((session, idx) => (
-										<Grid item key={idx}>
-											<div onClick={handleClickSession}>
+									{cinema.filmSessions!.map((session) => (
+										<Grid item key={session.id}>
+											<div
+												className={classes.sessions__item}
+												onClick={(): void => onOpenBuyingTicketsPopup(session.id)}
+											>
 												<SessionInfo
 													time={session.date}
 													hallNumber={session.hall!.number}
-													price={session.price}
+													price={session.tickets![0].price}
 													hallType={session.hall!.type}
 												/>
 											</div>

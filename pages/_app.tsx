@@ -1,5 +1,12 @@
 import '../styles/index.scss';
 import React from 'react';
+
+import dayjs from 'dayjs';
+import isToday from 'dayjs/plugin/isToday';
+import isTomorrow from 'dayjs/plugin/isTomorrow';
+import duration from 'dayjs/plugin/duration';
+import updateLocale from 'dayjs/plugin/updateLocale';
+
 import type { AppProps } from 'next/app';
 import 'dayjs/locale/ru';
 import { PageLayout } from '../components/PageLayout';
@@ -11,14 +18,21 @@ import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { BuyingTicketsPopup } from 'components/BuyingTicketsPopup';
-import { MODALS_QUERIES } from 'common/constants';
+import { BUYING_TICKETS_MODAL_QUERIES } from 'common/constants';
 import { getPathAndQuery } from 'common/utils/getPathWithoutQuery';
+import { useIsNotSsr } from 'hooks/useIsNotSsr';
+
+dayjs.extend(isToday);
+dayjs.extend(isTomorrow);
+dayjs.extend(duration);
+dayjs.extend(updateLocale);
+dayjs.locale('ru');
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const { asPath, query } = router;
 
-	console.log('ROUTER', router);
+	const isNotSsr = useIsNotSsr();
 
 	React.useEffect(() => {
 		const handleStart = (url: string) => {
@@ -41,13 +55,15 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, [router]);
 
 	const handleCloseBuyingTicketsPopup = (): void => {
-		const { path, query } = getPathAndQuery(asPath);
-		delete query[MODALS_QUERIES.BUYING_TICKETS_POPUP];
+		const newQuery = { ...query };
+		Object.values(BUYING_TICKETS_MODAL_QUERIES).forEach((value) => {
+			delete newQuery[value];
+		});
 
 		router.push(
 			{
-				pathname: path,
-				query,
+				pathname: router.pathname,
+				query: newQuery,
 			},
 			undefined,
 			{
@@ -63,10 +79,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<PageLayout>
 					<Component {...pageProps} />
 				</PageLayout>
-				<BuyingTicketsPopup
-					open={Boolean(query[MODALS_QUERIES.BUYING_TICKETS_POPUP])}
-					onClose={handleCloseBuyingTicketsPopup}
-				/>
+				{router.isReady && (
+					<BuyingTicketsPopup
+						open={Boolean(query[BUYING_TICKETS_MODAL_QUERIES.BUYING_TICKETS_POPUP])}
+						onClose={handleCloseBuyingTicketsPopup}
+					/>
+				)}
 			</LocalizationProvider>
 		</ThemeProvider>
 	);

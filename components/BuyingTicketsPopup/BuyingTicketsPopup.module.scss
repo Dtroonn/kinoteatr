@@ -1,5 +1,33 @@
 .popup {
-   &__content-wrapper {
-    background: #22262b;
-   }
-}
+    &__wrapper {
+        background: #22262b;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+        @media (min-width: ($md2+px)) {
+            min-height: 604px;
+        }
+    }
+
+    &__loader {
+        margin: auto;
+    }
+
+    &__content {
+       position: relative;
+       padding: 0;
+       display: flex;
+       flex-direction: column;
+       height: 400px;
+       overflow: hidden;
+    }
+
+    &__footer {
+        padding: 8px;
+        border-top: 1px solid #3C3D44;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+ }

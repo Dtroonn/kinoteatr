@@ -195,35 +195,34 @@ export const FilmsFilters: React.FC<IFilmsFiltersProps> = ({ category }) => {
 
 	return (
 		<div className={classes['films-filters']}>
-			<Grid container spacing={2} justifyContent="center">
-				{category === 'cinema' && (
-					<Grid item xs={3}>
-						<SelectLoaingWrapper loading={!isLoadedFilmTypes}>
-							<FormControl sx={{ width: '100%' }} size="small">
-								<Select
-									MenuProps={{ disableScrollLock: true }}
-									value={selectedFilmType}
-									onChange={handleChangeFilmType}
-									className={classes['films-filters__select']}
-									displayEmpty
-									inputProps={{
-										'aria-label': 'Without label',
-									}}
-								>
-									{filmTypes.map((filmType, index) => (
-										<MenuItem key={index} value={filmType.alias}>
-											{filmType.name}
-										</MenuItem>
-									))}
-								</Select>
-							</FormControl>
-						</SelectLoaingWrapper>
-					</Grid>
-				)}
-				<Grid item xs={3}>
-					<CustomDatePicker onChange={handleChangeDate} value={date} />
-				</Grid>
-				<Grid item xs={3}>
+			<div className={classes['films-filters__forms']}>
+				<div className={classes['films-filters__forms-item']}>
+					<SelectLoaingWrapper loading={!isLoadedFilmTypes}>
+						<FormControl sx={{ width: '100%' }} size="small">
+							<Select
+								MenuProps={{ disableScrollLock: true }}
+								value={selectedFilmType}
+								onChange={handleChangeFilmType}
+								className={classes['films-filters__select']}
+								displayEmpty
+								inputProps={{
+									'aria-label': 'Without label',
+								}}
+							>
+								{filmTypes.map((filmType, index) => (
+									<MenuItem key={index} value={filmType.alias}>
+										{filmType.name}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+					</SelectLoaingWrapper>
+				</div>
+
+				<div className={classes['films-filters__forms-item']}>
+					<CustomDatePicker onChange={handleChangeDate} value={date} fullWidth />
+				</div>
+				<div className={classes['films-filters__forms-item']}>
 					<SelectLoaingWrapper loading={!isLoadedGenres}>
 						<FormControl sx={{ width: '100%' }} size="small">
 							<Select
@@ -257,13 +256,82 @@ export const FilmsFilters: React.FC<IFilmsFiltersProps> = ({ category }) => {
 							</Select>
 						</FormControl>
 					</SelectLoaingWrapper>
+				</div>
+			</div>
+			<Button variant="text" onClick={onReset} className={classes['films-filters__btn']}>
+				Сбросить фильтр
+			</Button>
+			{/* <Grid flexWrap="wrap" container spacing={2} justifyContent="center">
+				<Grid container item xs={9} spacing={2}>
+					{category === 'cinema' && (
+						<Grid item xs={4} minWidth={230}>
+							<SelectLoaingWrapper loading={!isLoadedFilmTypes}>
+								<FormControl sx={{ width: '100%' }} size="small">
+									<Select
+										MenuProps={{ disableScrollLock: true }}
+										value={selectedFilmType}
+										onChange={handleChangeFilmType}
+										className={classes['films-filters__select']}
+										displayEmpty
+										inputProps={{
+											'aria-label': 'Without label',
+										}}
+									>
+										{filmTypes.map((filmType, index) => (
+											<MenuItem key={index} value={filmType.alias}>
+												{filmType.name}
+											</MenuItem>
+										))}
+									</Select>
+								</FormControl>
+							</SelectLoaingWrapper>
+						</Grid>
+					)}
+					<Grid item xs={4} minWidth={230}>
+						<CustomDatePicker onChange={handleChangeDate} value={date} />
+					</Grid>
+					<Grid item xs={4} minWidth={230}>
+						<SelectLoaingWrapper loading={!isLoadedGenres}>
+							<FormControl sx={{ width: '100%' }} size="small">
+								<Select
+									value={selectedGenre}
+									onChange={handleChangeGenre}
+									multiple
+									renderValue={(selected) => {
+										if (selected.length === 0) {
+											return 'жанры';
+										}
+
+										if (selected.length === 1) {
+											return genres.find((genre) => genre.alias === selected[0])?.name;
+										}
+
+										if (selected.length > 1 && selected.length < 5) {
+											return `${selected.length} жанра`;
+										}
+
+										return `${selected.length} жанров`;
+									}}
+									MenuProps={{ disableScrollLock: true }}
+									className={classes['films-filters__select']}
+									displayEmpty
+								>
+									{genres.map((genre) => (
+										<MenuItem key={genre.alias} value={genre.alias}>
+											{genre.name}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+						</SelectLoaingWrapper>
+					</Grid>
 				</Grid>
 				<Grid item xs={3}>
 					<Button variant="text" onClick={onReset} className={classes['films-filters__btn']}>
 						Сбросить фильтр
 					</Button>
 				</Grid>
-			</Grid>
+			</Grid> */}
 		</div>
 	);
 };
@@ -283,7 +351,7 @@ const SelectLoaingWrapper: React.FC<{ loading: boolean; children: React.ReactNod
 				<CircularProgress
 					className={classes['select-loading-wrapper__loader']}
 					size={20}
-					color="secondary"
+					color="primary"
 				/>
 			)}
 		</div>

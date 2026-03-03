@@ -1,20 +1,14 @@
 import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { CustomStaticDatePicker } from 'components/customDatePickers/CustomStaticDatePicker';
 import { Icon } from 'components/Icon';
 
 import classes from './ScheduleDatePicker.module.scss';
 import { IScheduleDatePickerProps } from './ScheduleDatePicker.props';
 
-import isToday from 'dayjs/plugin/isToday';
-import isTomorrow from 'dayjs/plugin/isTomorrow';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { MONTHS_MAP } from './MonthsMap';
-
-dayjs.extend(isToday);
-dayjs.extend(isTomorrow);
 
 export const ScheduleDatePicker: React.FC<IScheduleDatePickerProps> = ({
 	onChange,
@@ -40,7 +34,7 @@ export const ScheduleDatePicker: React.FC<IScheduleDatePickerProps> = ({
 
 	const getTitle = (value: Dayjs | null) => {
 		if (value) {
-			console.log('VALUE', value);
+			// console.log('VALUE', value);
 			if (value.isToday()) {
 				return 'сегодня';
 			}
@@ -52,16 +46,16 @@ export const ScheduleDatePicker: React.FC<IScheduleDatePickerProps> = ({
 		}
 	};
 
-	console.log('VALUE', value);
+	// console.log('VALUE', value);
 
-	console.log('TITLE', getTitle(value));
+	// console.log('TITLE', getTitle(value));
 
 	return (
 		<div className={className}>
 			<button onClick={handleClick} className={classes['header-button']}>
 				<Typography variant="h5" color="white" component="span">
 					Расписание{' '}
-					<Typography variant="h5" color="secondary" component="span">
+					<Typography className={classes['header-button__title']} variant="h5" component="span">
 						{getTitle(value)}
 					</Typography>
 				</Typography>

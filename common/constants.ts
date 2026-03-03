@@ -6,6 +6,7 @@ export const BREAKPOINTS = {
 	xl: 1190,
 };
 
-export const MODALS_QUERIES = {
+export const BUYING_TICKETS_MODAL_QUERIES = {
 	BUYING_TICKETS_POPUP: 'buyingTicketsPopup',
+	SESSION_ID: 'sessionId',
 };

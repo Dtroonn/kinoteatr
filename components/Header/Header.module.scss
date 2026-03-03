@@ -9,6 +9,7 @@
         margin: 0 0 0 40px;
         @media (max-width: ($md3+px)) {
             min-width: auto;
+            margin: 0 0 0 16px;
         }
     }
 
@@ -37,12 +38,20 @@
         align-items: center;
     }
 
+    &__logo-and-city {
+        display: flex;
+        align-items: center;
+        gap: 0 24px;
+    }
+
     &__logo-link {
         position: relative;
         flex: 0 1 107px;
+        width: 107px;
         height: 52px;
         @media (max-width: ($md4+px)) {
          flex: 0 1 90px;
+         width: 90px;
         }
     }
     

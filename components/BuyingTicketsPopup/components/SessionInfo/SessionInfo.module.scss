@@ -1,0 +1,38 @@
+.session-info {
+    &__header {
+       display: flex;
+       align-items: center;
+       gap: 6px;
+    }
+ 
+    &__name {
+       @media (max-width: ($md2+px)) {
+          font-size: 0.875rem;
+       }
+    }
+ 
+    &__place {
+       color: var(--gray);
+       margin: 5px 0 0 0;
+       @media (max-width: ($md2+px)) {
+          font-size: 0.775rem;
+       }
+    }
+ 
+     &__format {
+         padding: 2px 4px;
+         border-radius: 2px;
+         display: inline-block;
+         background-color: var(--secondary);
+         color: var(--white);
+         p {
+            font-size: calc(12rem/16);
+         }
+     }
+ 
+     &__date {
+       @media (max-width: ($md2+px)) {
+          font-size: 0.775rem;
+       }
+     }
+  }

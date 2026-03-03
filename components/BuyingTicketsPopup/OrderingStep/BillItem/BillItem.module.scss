@@ -1,0 +1,11 @@
+.bill-item {
+    display: flex;
+    align-items: center;
+    color: var(--darkWhite);
+
+    &__border {
+        border-bottom: 2px dotted #3C3D44;
+        flex: 1 1 auto;
+        margin: 0 8px;
+    }
+}

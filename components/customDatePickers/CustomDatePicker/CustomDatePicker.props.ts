@@ -1,7 +1,8 @@
-import { Dayjs } from "dayjs";
+import { Dayjs } from 'dayjs';
 
 export interface ICustomDatePickerProps {
-    onChange: (value: Dayjs | null, keyboardInputValue?: string | undefined) => void;
-    value: null | Dayjs;
-    availableDates?: string[];
+	onChange: (value: Dayjs | null, keyboardInputValue?: string | undefined) => void;
+	value: null | Dayjs;
+	availableDates?: string[];
+	fullWidth?: boolean;
 }

@@ -36,7 +36,9 @@ export const ScheduleFilters: React.FC<IScheduleFiltersProps> = ({ className }) 
 	const [hallsTypes, setHallsTypes] = React.useState<IHallType[]>([]);
 	const [selectedHallsTypes, setSelectedHallsTypes] = React.useState<string[]>([]);
 
-	const [date, setDate] = React.useState<Dayjs | null>(dayjs(film.filmSessions[0].date));
+	const [date, setDate] = React.useState<Dayjs | null>(
+		dayjs(film.filmSessions[0]?.date || new Date()),
+	);
 
 	const router = useRouter();
 	const { asPath } = router;
@@ -65,7 +67,11 @@ export const ScheduleFilters: React.FC<IScheduleFiltersProps> = ({ className }) 
 			);
 		}
 
-		setDate(typeof query.date === 'string' ? dayjs(query.date) : dayjs(film.filmSessions[0].date));
+		setDate(
+			typeof query.date === 'string'
+				? dayjs(query.date)
+				: dayjs(film.filmSessions[0]?.date || new Date()),
+		);
 	}, [query.formats, query.hallsTypes, query.date, formats, hallsTypes]);
 
 	const pushWithManageQuery = (key: keyof IScheduleFiltersQuery, value?: string) => {

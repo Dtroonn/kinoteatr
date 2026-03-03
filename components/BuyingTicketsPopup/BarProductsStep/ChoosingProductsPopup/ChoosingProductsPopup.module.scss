@@ -1,0 +1,104 @@
+.popup {
+    &__paper {
+        background: var(--secondary);
+    }
+
+    &__title {
+        color: var(--lightSecondary);
+        padding-right: 66px;
+    }
+
+    &__close-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        color: var(--primary);
+    }
+
+    &__footer {
+        padding: 8px 24px;
+        position: relative;
+        &_bt {
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 1px;
+                width: 94%;
+                background: var(--darkWhite);
+            }
+        }
+    }
+
+    &__footer-body {
+        align-items: flex-end;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+    }
+
+    &__footer-title {
+        margin: 0 0 0.8em 0;
+        color: var(--darkWhite);
+
+    }
+
+    &__product-name {
+        margin: 0 0 0.3em 0;
+        color: var(--darkWhite);
+    }
+}
+
+.products {
+    margin: 0 0 10px 0;
+    &:last-child {
+        margin: 0;
+    }
+    &__category {
+        color: var(--lightSecondary) !important;
+        font-size: 1.25rem;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        color: var(--darkWhite);
+        justify-content: space-between;
+    }
+
+    &__radio-button {
+        color: var(--primary)
+    }
+
+    &__option-price {
+        color: var(--lightSecondary)
+    }
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+
+    &__btn {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--primary);
+        background: var(--primary);
+        transition: all 0.3s ease 0s;
+        border-radius: 50%;
+
+        &:hover {
+            background: transparent;
+        }
+    }
+
+    &__icon {
+        color: var(--white);
+    }
+
+    &__text {
+        margin: 0 14px;
+    }
+}

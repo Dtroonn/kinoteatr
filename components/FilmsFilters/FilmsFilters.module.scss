@@ -1,6 +1,35 @@
 .films-filters {
     background: #141822;
     padding: 30px 80px;
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    @media (max-width: ($md2+px)) {
+        padding: 25px 50px;
+    }
+
+    @media (max-width: ($md4+px)) {
+        padding: 16px;
+    }
+
+    &__forms {
+        display: flex;
+        flex: 1 1 auto;
+        margin: 0 -8px;
+        flex-wrap: wrap;
+    }
+
+    &__forms-item {
+        flex: 0 1 33.333%;
+        padding: 0 8px;
+        min-width: 230px;
+        @media (max-width: ($md2+px)) {
+            margin: 0 0 10px 0;
+            flex: 0 1 100%;
+        }
+    }
 
     &__select {
         background: #fff;
@@ -8,7 +37,11 @@
 
     &__btn {
         height: 100%;
-        width: 100%;
+        // width: 100%;
+        margin: 0 0 0 16px;
+        @media (max-width: 1102px) {
+            margin: 10px 0 0 16px;
+        }
     }
 }
 

@@ -23,6 +23,12 @@
 }
 
 .footer-menu {
+    display: none;
+    @media (min-width: 601px) {
+        display: block;
+    }
+
+
     &__title {
         font-weight: 600;
     }
@@ -50,6 +56,10 @@
 }
 
 .accordion {
+    display: none;
+    @media (max-width: 600px) {
+        display: block;
+    }
 
     &__header {
         position: relative;

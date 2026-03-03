@@ -1,3 +1,3 @@
 export interface IFilmsFiltersProps {
-    category: "cinema" | "theatre";
+	category: 'cinema' | 'theatre';
 }

@@ -1,10 +1,4 @@
-.popup {
-    &__content {
-       position: relative;
-    }
- }
- 
- .zoom-controls {
+.zoom-controls {
     position: absolute;
     right: 10px;
     z-index: 1;
@@ -17,7 +11,7 @@
        align-items: center;
        height: 60px;
        width: 60px;
-       background-color: #30343A;
+       background-color: var(--secondary);
        &:first-child {
           margin: 0 0 20px 0;
        }
@@ -29,24 +23,47 @@
     }
  }
 
- .session-info {
-   &__header {
+ .draggable-block {
+   position: relative;
+
+   &__screen-image {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+   }
+
+   &__content {
+      position: relative;
+      cursor: move;
+      width: 100%;
+      height: 800px;
+      margin: -200px 0 0 0;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 6px;
+   }
+ }
+
+ .footer-actions {
+   display: flex;
+   gap: 0 20px;
+ }
+
+ .footer-price-info {
+   display: flex;
+   gap: 0 6px;
+   align-items: center;
+   
+   &__circle {
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      background: var(--primary);
    }
 
-   &__place {
-      color: var(--gray);
-      margin: 5px 0 0 0;
+   &__text {
+      color: var(--darkWhite);
    }
-
-    &__format {
-        padding: 2px 4px;
-        border-radius: 2px;
-        display: inline-block;
-        background-color: #30343A;;
-        color: var(--white);
-        font-size: 12px;
-    }
  }
